@@ -4,7 +4,7 @@
 
 CoreVision Studio is an intelligent developer toolkit that helps engineers analyze, optimize, and prepare computer vision models for deployment.
 
-Instead of relying on multiple disconnected tools, developers can inspect models, monitor performance, identify bottlenecks, simulate optimizations, compare results, and generate deployment reports from a single interface.
+Instead of relying on multiple disconnected tools, developers can inspect models, monitor performance, simulate optimizations, compare results, and generate deployment reports from a single interface.
 
 Supported model types include:
 
@@ -62,7 +62,6 @@ CoreVision Studio solves this by providing a unified performance engineering wor
 
 ### Performance Copilot
 - Local AI-powered recommendations
-- Bottleneck identification
 - Optimization suggestions
 - Performance explanations
 
@@ -273,7 +272,6 @@ Generate Deployment Insights
 
 Receive:
 - Readiness Score
-- Bottleneck Analysis
 - Optimization Recommendations
 
 ### Step 6
