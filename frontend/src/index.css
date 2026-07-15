@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-main: 'Inter', 'SF Pro Display', sans-serif;
+  }
+  
+  body {
+    @apply bg-core-bg text-slate-100 font-sans min-h-screen overflow-x-hidden m-0 p-0;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: rgba(12, 16, 35, 0.38);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.25),
+      0 0 40px rgba(91, 140, 255, 0.12);
+    border-radius: 24px;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .glass-panel:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.3),
+      0 0 60px rgba(91, 140, 255, 0.18);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-br from-indigo-100 to-indigo-300 bg-clip-text text-transparent;
+  }
+}
+

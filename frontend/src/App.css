@@ -1,0 +1,340 @@
+/* ==========================================================================
+   COREVISION STUDIO DESIGN SYSTEM
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Aurora Background System
+   (Dynamic implementation handled via Framer Motion in AuroraBackground.tsx)
+   -------------------------------------------------------------------------- */
+.aurora-container {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  background-color: #070B17;
+}
+
+/* --------------------------------------------------------------------------
+   Glass Panel System
+   (Main classes defined in index.css @layer components, extensions below)
+   -------------------------------------------------------------------------- */
+.glass-panel-heavy {
+  background: rgba(7, 11, 23, 0.75);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(91, 140, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   Dashboard Layout System
+   -------------------------------------------------------------------------- */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+.dashboard-sidebar {
+  grid-column: span 3;
+}
+
+.dashboard-main {
+  grid-column: span 9;
+}
+
+/* --------------------------------------------------------------------------
+   Metric Cards
+   -------------------------------------------------------------------------- */
+.metric-value-glow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.metric-trend-up {
+  color: #22C55E;
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.metric-trend-down {
+  color: #EF4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   Animated Gauges
+   -------------------------------------------------------------------------- */
+.gauge-track {
+  stroke: rgba(255, 255, 255, 0.05);
+}
+
+.gauge-fill-cyan {
+  stroke: #22D3EE;
+  filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.5));
+}
+
+.gauge-fill-purple {
+  stroke: #A855F7;
+  filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.5));
+}
+
+/* --------------------------------------------------------------------------
+   Neural Network Visualization Styles
+   -------------------------------------------------------------------------- */
+.nn-node {
+  fill: #0F172A;
+  stroke: rgba(109, 93, 251, 0.5);
+  stroke-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.nn-node:hover {
+  fill: rgba(109, 93, 251, 0.2);
+  stroke: #6D5DFB;
+  filter: drop-shadow(0 0 10px rgba(109, 93, 251, 0.5));
+}
+
+.nn-edge {
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 1px;
+}
+
+.nn-edge-active {
+  stroke: #22D3EE;
+  stroke-width: 2px;
+  filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.6));
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar Navigation
+   -------------------------------------------------------------------------- */
+.nav-item {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) scaleY(0);
+  width: 3px;
+  height: 24px;
+  background: #6D5DFB;
+  border-radius: 0 4px 4px 0;
+  transition: transform 0.2s ease;
+}
+
+.nav-item.active::before {
+  transform: translateY(-50%) scaleY(1);
+}
+
+/* --------------------------------------------------------------------------
+   Module-Specific Themes
+   -------------------------------------------------------------------------- */
+/* Vision Playground */
+.theme-playground .accent-primary { color: #22D3EE; }
+.theme-playground .bg-primary { background: rgba(34, 211, 238, 0.1); }
+
+/* Deployment Analyzer */
+.theme-deploy .accent-primary { color: #A855F7; }
+.theme-deploy .bg-primary { background: rgba(168, 85, 247, 0.1); }
+
+/* ===========================
+   USER DESIGN SYSTEM — AURORA TECH
+=========================== */
+
+/* CSS Custom Properties */
+:root {
+  --bg: #050816;
+  --card: rgba(12,16,35,.45);
+  --cyan: #22D3EE;
+  --blue: #5B8CFF;
+  --purple: #8B5CF6;
+  --pink: #EC4899;
+  --border: rgba(255,255,255,.08);
+}
+
+/* Aurora body pseudo-elements */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(34,211,238,.18), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(168,85,247,.20), transparent 35%),
+    radial-gradient(circle at 60% 70%, rgba(91,140,255,.15), transparent 40%);
+  filter: blur(120px);
+  animation: auroraFloat 18s ease-in-out infinite;
+  z-index: -10;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  z-index: -9;
+  pointer-events: none;
+}
+
+@keyframes auroraFloat {
+  0%   { transform: translate(0,0) scale(1); }
+  50%  { transform: translate(-80px,-50px) scale(1.2); }
+  100% { transform: translate(0,0) scale(1); }
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(12,16,35,.40);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 28px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.25), 0 0 40px rgba(91,140,255,.08);
+  transition: .35s;
+}
+
+.glass:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 50px rgba(0,0,0,.35), 0 0 50px rgba(34,211,238,.12);
+}
+
+/* Hero card inner glows */
+.hero-card { position: relative; overflow: hidden; }
+.hero-card::before {
+  content: "";
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(34,211,238,.15), transparent);
+  top: -200px; left: -150px;
+  filter: blur(50px);
+}
+.hero-card::after {
+  content: "";
+  position: absolute;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(168,85,247,.15), transparent);
+  right: -150px; top: -100px;
+  filter: blur(50px);
+}
+
+/* Sidebar items */
+.sidebar-item { transition: .3s; border-radius: 18px; }
+.sidebar-item:hover { background: rgba(91,140,255,.08); }
+.sidebar-item.active {
+  background: linear-gradient(135deg, rgba(91,140,255,.25), rgba(168,85,247,.25));
+  border: 1px solid rgba(168,85,247,.35);
+  box-shadow: 0 0 30px rgba(168,85,247,.25);
+}
+
+/* Upload box */
+.upload-box {
+  position: relative; overflow: hidden;
+  border: 2px dashed rgba(34,211,238,.8);
+  border-radius: 32px;
+}
+.upload-box::before {
+  content: "";
+  position: absolute; inset: -3px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #22D3EE, #8B5CF6, #EC4899, #22D3EE);
+  background-size: 300% 300%;
+  z-index: -1;
+  filter: blur(18px);
+  animation: borderMove 8s linear infinite;
+}
+
+@keyframes borderMove {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* Primary button */
+.primary-btn {
+  background: linear-gradient(135deg, #5B8CFF, #8B5CF6);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: .3s;
+}
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px rgba(91,140,255,.4);
+}
+
+/* Stat card inner gradient */
+.stat-card { position: relative; }
+.stat-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(34,211,238,.08), rgba(168,85,247,.08));
+  pointer-events: none;
+}
+
+/* Ambient glow orbs */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -8;
+}
+
+.orb1 {
+  width: 300px; height: 300px;
+  background: #22D3EE;
+  left: -100px; top: 20%;
+  opacity: .15;
+  animation: float1 15s infinite ease-in-out;
+}
+
+.orb2 {
+  width: 350px; height: 350px;
+  background: #A855F7;
+  right: -100px; top: 15%;
+  opacity: .15;
+  animation: float2 18s infinite ease-in-out;
+}
+
+.orb3 {
+  width: 250px; height: 250px;
+  background: #5B8CFF;
+  bottom: -50px; left: 35%;
+  opacity: .12;
+  animation: float3 20s infinite ease-in-out;
+}
+
+@keyframes float1 { 50% { transform: translateY(-40px) translateX(50px); } }
+@keyframes float2 { 50% { transform: translateY(50px) translateX(-50px); } }
+@keyframes float3 { 50% { transform: translateY(-30px) translateX(30px); } }
+
+/* Text utilities */
+.gradient-text {
+  background: linear-gradient(135deg, #22D3EE, #8B5CF6, #EC4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Optimization Copilot */
+.theme-copilot .accent-primary { color: #6D5DFB; }
+.theme-copilot .bg-primary { background: rgba(109, 93, 251, 0.1); }
